@@ -36,12 +36,12 @@ int builtIn(char** args, int argcp)
   } else if (strcmp(args[0], "cd") == 0){
     cd(args, argcp);
     return 1;
-  } /*else if (strcmp(args[0], "wc") == 0){
-    ??(args, argcp);
-  }*/
+  } else if (strcmp(args[0], "ls") == 0){
+    ls(args, argcp);
+  }
   printf("Use the following commands:\n pwd - print current directory\n");
   printf("exit [value] - exit the shell with the value\n cd - change the current directory");
-  printf("?? - don't know yet")
+  printf("ls - lists file and directories in pwd")
   return 0;
 
 
@@ -70,7 +70,7 @@ static void cd(char** args, int argcp)
   }
   printf("%s\n", getcwd(s, 512));
 }
-static void show_dir_content(char** args, int argpcp)
+static void ls(char** args, int argpcp)
 {
   DIR * directory = opendir(pwd(char** args, int argpcp));
   if(directory == NULL) return;
